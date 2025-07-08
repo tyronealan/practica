@@ -1,0 +1,23 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Página principal
+app.get('/', (req, res) => {
+  res.send('<h1>Bienvenido a mi servidor en Rocky Linux</h1><p>Usando Node.js y Express</p>');
+});
+
+// Página de contacto
+app.get('/contacto', (req, res) => {
+  res.send('<h2>Página de Contacto</h2><p>Email: contacto@ejemplo.com</p>');
+});
+
+// Ruta dinámica con parámetros
+app.get('/saludo/:nombre', (req, res) => {
+  const nombre = req.params.nombre;
+  res.send(`<h2>Hola, ${nombre}!</h2><p>¡Bienvenido a tu servidor!</p>`);
+});
+
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
